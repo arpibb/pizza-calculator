@@ -21,6 +21,10 @@ const IndexPage = () => (
       alt="A Gatsby astronaut"
       style={{ marginBottom: `1.45rem` }}
     />
+    <p>
+      Check <a href="https://youtu.be/1-SJGQ2HLp8">this</a> out if you are
+      clueless how to do this.
+    </p>
   </Layout>
 )
 

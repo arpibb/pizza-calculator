@@ -11,6 +11,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <h1>Hi people</h1>
     <p>This is a pizza calculator</p>
+    <PizzaCalculator />
     <p>Now go and bake a great pizza!</p>
     <StaticImage
       src="https://banner2.cleanpng.com/20180811/wow/kisspng-neapolitan-pizza-neapolitan-cuisine-italian-cuisin-pizza-fest-e-shopping-il-gusto-di-piano-di-sorren-5b6fa4e876b2f5.0031116815340433684862.jpg"
@@ -20,7 +21,6 @@ const IndexPage = () => (
       alt="A Gatsby astronaut"
       style={{ marginBottom: `1.45rem` }}
     />
-    <PizzaCalculator />
   </Layout>
 )
 

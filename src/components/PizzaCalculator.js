@@ -43,7 +43,7 @@ const PizzaCalculator = () => {
     Math.round((amount / unitCalc()) * pizzaWanted)
   return (
     <div>
-      <h2>How many pizza you'd like to prepare?</h2>
+      <h2>How many pizza you'd like to make?</h2>
       <input
         type="number"
         value={pizzaWanted}

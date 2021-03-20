@@ -1,64 +1,88 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const INGREDIENTS = [
   {
     name: 'flour',
-    measure: 'g',
-    amount: 500,
+    metricSmall: 'g',
+    basisAmount: 500,
+    metricBig: 'kg',
   },
   {
     name: 'water',
-    measure: 'ml',
-    amount: 325,
+    metricSmall: 'ml',
+    basisAmount: 325,
+    metricBig: 'l',
   },
   {
     name: 'yeast',
-    measure: 'g',
-    amount: 7,
+    metricSmall: 'g',
+    basisAmount: 7,
+    metricBig: 'kg',
   },
   {
     name: 'salt',
-    measure: 'g',
-    amount: 10,
+    metricSmall: 'g',
+    basisAmount: 10,
+    metricBig: 'kg',
   },
-]
+];
 
 const unitCalc = () => {
-  const doughWeight = 6 * 130
-  const pizzaWeight = 150
+  const doughWeight = 6 * 130;
+  const pizzaWeight = 150;
 
-  return Math.round(doughWeight / pizzaWeight)
-}
+  return Math.round(doughWeight / pizzaWeight);
+};
 
 const PizzaCalculator = () => {
-  const [pizzaWanted, setPizzaWanted] = useState(2)
+  const [pizzaWanted, setPizzaWanted] = useState(2);
 
   const handleChange = e => {
-    const number = e.target.value
-    setPizzaWanted(number)
-    console.log(number)
-  }
+    const number = e.target.value;
+    setPizzaWanted(number);
+    console.log(number);
+  };
 
-  const calculateNeededAmount = amount =>
-    Math.round((amount / unitCalc()) * pizzaWanted)
+  const calculateNeededAmount = basisAmount =>
+    Math.round((basisAmount / unitCalc()) * pizzaWanted);
+
+  const generateText = ({ name, metricSmall, basisAmount, metricBig }) => {
+    const neededAmount = calculateNeededAmount(basisAmount);
+    const isBigAmount = neededAmount >= 1000;
+    const finalAmount = isBigAmount ? neededAmount / 1000 : neededAmount;
+    const correctMetric = isBigAmount ? metricBig : metricSmall;
+
+    return `${name}: ${finalAmount}${correctMetric}`;
+  };
   return (
-    <div>
-      <h2>How many pizza you'd like to make?</h2>
+    <StyledContainer>
+      <h2>How many pizza you want to make?</h2>
       <input
         type="number"
         value={pizzaWanted}
         onChange={e => handleChange(e)}
       />
-      <ul>
-        You need the following amount from the ingredients:
-        {INGREDIENTS.map(({ name, measure, amount }) => (
-          <li style={{ marginLeft: '30px' }}>{`${name}: ${calculateNeededAmount(
-            amount
-          )}${measure}`}</li>
+      <StyledList>
+        <p>You need the following amount from the ingredients:</p>
+        {INGREDIENTS.map(ingredient => (
+          <li style={{ marginLeft: '30px' }}>{generateText(ingredient)}</li>
         ))}
-      </ul>
-    </div>
-  )
-}
+      </StyledList>
+    </StyledContainer>
+  );
+};
 
-export default PizzaCalculator
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+export default PizzaCalculator;

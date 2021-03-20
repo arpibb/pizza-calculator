@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Pizza Calculator`,
     description: `This is what it is.`,
-    author: `arpiB`,
+    author: `ArpiB`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -33,4 +33,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

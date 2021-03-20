@@ -1,16 +1,15 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
+import * as React from 'react';
+import { StaticImage } from 'gatsby-plugin-image';
+import styled from 'styled-components';
 
-import Layout from '../components/layout'
-import PizzaCalculator from '../components/PizzaCalculator'
-import SEO from '../components/seo'
+import Layout from '../components/layout';
+import PizzaCalculator from '../components/PizzaCalculator';
+import SEO from '../components/seo';
 
 const IndexPage = () => (
-  <Layout>
+  <StyledLayout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>This is a pizza calculator</p>
+    <h1>Pizza Party Calculator</h1>
     <PizzaCalculator />
     <p>Now go and bake a great pizza!</p>
     <StaticImage
@@ -22,10 +21,17 @@ const IndexPage = () => (
       style={{ marginBottom: `1.45rem` }}
     />
     <p>
-      Check <a href="https://youtu.be/1-SJGQ2HLp8">this</a> out if you are
-      clueless how to do this.
+      Check out <a href="https://youtu.be/1-SJGQ2HLp8">this</a> and{' '}
+      <a href="https://youtu.be/8Q_9h6VKm9c">this</a> if you are clueless how to
+      do this.
     </p>
-  </Layout>
-)
+  </StyledLayout>
+);
 
-export default IndexPage
+const StyledLayout = styled(Layout)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export default IndexPage;

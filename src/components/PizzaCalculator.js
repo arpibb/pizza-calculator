@@ -28,6 +28,18 @@ const INGREDIENTS = [
   },
 ];
 
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
 const unitCalc = () => {
   const doughWeight = 6 * 130;
   const pizzaWeight = 150;
@@ -72,17 +84,5 @@ const PizzaCalculator = () => {
     </StyledContainer>
   );
 };
-
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const StyledList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
 
 export default PizzaCalculator;

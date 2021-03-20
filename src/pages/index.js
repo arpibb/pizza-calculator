@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import PizzaCalculator from '../components/PizzaCalculator';
 import SEO from '../components/seo';
 
 const IndexPage = () => (
-  <StyledLayout>
+  <Layout>
     <SEO title="Home" />
     <h1>Pizza Party Calculator</h1>
     <PizzaCalculator />
@@ -25,13 +24,7 @@ const IndexPage = () => (
       <a href="https://youtu.be/8Q_9h6VKm9c">this</a> if you are clueless how to
       do this.
     </p>
-  </StyledLayout>
+  </Layout>
 );
-
-const StyledLayout = styled(Layout)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 export default IndexPage;

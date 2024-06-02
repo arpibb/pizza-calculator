@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+'use client';
+import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 
 const INGREDIENTS = [
@@ -50,16 +51,26 @@ const unitCalc = () => {
 const PizzaCalculator = () => {
   const [pizzaWanted, setPizzaWanted] = useState(2);
 
-  const handleChange = e => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const number = e.target.value;
-    setPizzaWanted(number);
+    setPizzaWanted(Number(number));
     console.log(number);
   };
 
-  const calculateNeededAmount = basisAmount =>
+  const calculateNeededAmount = (basisAmount: number) =>
     Math.round((basisAmount / unitCalc()) * pizzaWanted);
 
-  const generateText = ({ name, metricSmall, basisAmount, metricBig }) => {
+  const generateText = ({
+    name,
+    metricSmall,
+    basisAmount,
+    metricBig,
+  }: {
+    name: string;
+    metricSmall: string;
+    basisAmount: number;
+    metricBig: string;
+  }) => {
     const neededAmount = calculateNeededAmount(basisAmount);
     const isBigAmount = neededAmount >= 1000;
     const finalAmount = isBigAmount ? neededAmount / 1000 : neededAmount;
@@ -71,13 +82,13 @@ const PizzaCalculator = () => {
     <StyledContainer>
       <h2>How many pizza you want to make?</h2>
       <input
-        type="number"
+        type='number'
         value={pizzaWanted}
-        onChange={e => handleChange(e)}
+        onChange={(e) => handleChange(e)}
       />
       <StyledList>
         <p>You need the following amount from the ingredients:</p>
-        {INGREDIENTS.map(ingredient => (
+        {INGREDIENTS.map((ingredient) => (
           <li style={{ marginLeft: '30px' }}>{generateText(ingredient)}</li>
         ))}
       </StyledList>
